@@ -124,6 +124,7 @@ def process_pdf(pdf_file):
     # Filter for dates after November 1, 2024
     merged_data['Date'] = pd.to_datetime(merged_data['Date'], errors='coerce')
     merged_data = merged_data[merged_data['Date'] > '2024-11-01']
+    merged_data = merged_data[merged_data['Transaction Type'] == 'DEBIT']
 
     # Save the final merged data to Excel
     merged_data.to_excel('new_data.xlsx', index=False)
